@@ -8,6 +8,8 @@ import { buildConfig } from 'payload/config'
 
 import Users from './collections/Users'
 import Products from './collections/Products'
+import Medias from './collections/Medias'
+import UserDetails from './collections/UserDetails'
 
 export default buildConfig({
   admin: {
@@ -15,14 +17,14 @@ export default buildConfig({
     bundler: webpackBundler(),
   },
   editor: slateEditor({}),
-  collections: [Users, Products],
+  collections: [Users, Products, Medias, UserDetails],
   typescript: {
     outputFile: path.resolve(__dirname, 'payload-types.ts'),
   },
   graphQL: {
     schemaOutputFile: path.resolve(__dirname, 'generated-schema.graphql'),
   },
-  plugins: [payloadCloud()],
+  plugins: [],
   db: postgresAdapter({
     pool: {
       connectionString: process.env.DATABASE_URI,
