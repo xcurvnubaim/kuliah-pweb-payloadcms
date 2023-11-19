@@ -4,7 +4,7 @@ const Medias: CollectionConfig = {
   slug: "medias",
   fields: [
     {
-      name: "alt",
+      name: "image",
       type: "text",
     },
   ],

@@ -10,8 +10,37 @@ const Users: CollectionConfig = {
   },
   fields: [
     {
+      name: "email",
+      type: "email",
+      required: true,
+      unique: true,
+      hidden: true,
+    },
+    {
+      name: "fullname",
+      type: "text",
+    },
+    {
+      name: "phoneNumber",
+      type: "text",
+    },
+    {
       name: 'role',
-      type: 'text',
+      type: 'select',
+      options: [
+        {
+          label: 'User',
+          value: 'user',
+
+        }, {
+          label: 'Admin',
+          value: 'admin',
+        },
+        {
+          label: 'Tenant',
+          value: 'tenant',
+        }
+      ],
       defaultValue: 'user',
     }
   ],

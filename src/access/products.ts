@@ -9,7 +9,7 @@ const productsAccess = ({req: {user}}) => {
 
     // Will return access for only documents that were created by the current user
     return {
-      userId: {
+      tenant_id: {
         equals: user.id,
       },
     };

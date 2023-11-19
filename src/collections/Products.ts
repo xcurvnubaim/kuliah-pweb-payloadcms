@@ -15,15 +15,14 @@ const Products:CollectionConfig = {
             required: true
         },
         {
-            name: 'photo',
+            name: 'product_image',
             type: 'upload',
             relationTo: 'medias',
         },
         {
-            name: 'userId',
+            name: 'tenant_id',
             type: 'relationship',
-            relationTo: 'userdetails',
-            
+            relationTo: 'users',
         }
     ],
     hooks: {
@@ -32,7 +31,7 @@ const Products:CollectionConfig = {
               if (operation === 'create') {
                 if (req.user) {
                     console.log(req.user);
-                  data.userId = req.user.id;
+                  data.tenant_id = req.user.id;
                   return data;
                 }
               }
