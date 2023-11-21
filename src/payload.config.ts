@@ -9,6 +9,7 @@ import { buildConfig } from 'payload/config'
 import Users from './collections/Users'
 import Products from './collections/Products'
 import Medias from './collections/Medias'
+import { mongooseAdapter } from '@payloadcms/db-mongodb'
 
 
 export default buildConfig({
@@ -25,9 +26,12 @@ export default buildConfig({
     schemaOutputFile: path.resolve(__dirname, 'generated-schema.graphql'),
   },
   plugins: [],
-  db: postgresAdapter({
-    pool: {
-      connectionString: process.env.DATABASE_URI,
-    },
+  // db: postgresAdapter({
+  //   pool: {
+  //     connectionString: process.env.DATABASE_URI,
+  //   },
+  // }),
+  db: mongooseAdapter({
+    url: process.env.DATABASE_URI,
   }),
 })

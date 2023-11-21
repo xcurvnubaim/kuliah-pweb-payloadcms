@@ -4,6 +4,10 @@ const Users: CollectionConfig = {
   slug: 'users',
   auth: {
     tokenExpiration: 1000 * 60 * 60 * 24 * 7, // 7 days
+    cookies: {
+      sameSite: 'none',
+      secure: true
+    }
   },
   admin: {
     useAsTitle: 'email',
@@ -14,7 +18,6 @@ const Users: CollectionConfig = {
       type: "email",
       required: true,
       unique: true,
-      hidden: true,
     },
     {
       name: "fullname",
@@ -42,6 +45,11 @@ const Users: CollectionConfig = {
         }
       ],
       defaultValue: 'user',
+    },
+    {
+      name: 'photo',
+      type: 'upload',
+      relationTo: 'medias',
     }
   ],
 }
